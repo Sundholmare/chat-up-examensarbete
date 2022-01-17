@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'main-peach': '#EF7E77' 
+        'main-peach': '#EF7E77',
+        'off-white': '#EFEFEF',
+        'strong-blue': '#78C4EF'
       }
     },
   },
