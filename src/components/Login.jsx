@@ -5,8 +5,6 @@ import google from '../images/googleicon.png';
 
 const Login = () => {
 
-    const googleIcon = google;
-
     
     return (
         <div className="bg-blue-200 h-screen flex justify-center items-center">
@@ -15,7 +13,7 @@ const Login = () => {
                 <div 
                 onClick={() => auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()) } 
                 className="flex items-center justify-between w-56 border-4 border-blue-200 rounded-xl p-2 cursor-pointer">
-                    <img className="h-8" src={googleIcon} alt="" />
+                    <img className="h-8" src={google} alt="" />
                     <h2 className="font-bold text-xl" >Sign in with Google</h2>
                 </div>
             </div>
