@@ -1,0 +1,9 @@
+.shadowBox{
+    box-shadow: 7px 12px 18px -1px rgba(0,0,0,0.61);
+}
+
+.onHover:hover{
+    transform: scale(1.03);
+    box-shadow: 4px 8px 18px -1px rgba(0, 0, 0, 0.61);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
