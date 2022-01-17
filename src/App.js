@@ -5,13 +5,14 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+import { auth } from './firebase';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          <Route path="/" element={<Login />} />
         </Routes>
       </Router>
     </div>

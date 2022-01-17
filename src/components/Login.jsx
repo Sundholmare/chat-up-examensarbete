@@ -16,7 +16,7 @@ const Login = () => {
     
     return (
         <div className="bg-main-peach h-screen flex justify-center items-center">
-            <div className="flex flex-col justify-around items-center rounded-2xl bg-off-white w-2/5 h-2/5">
+            <div className="flex flex-col justify-around items-center rounded-2xl bg-off-white w-1/3 h-2/5">
                 <h1 className="font-bold text-4xl opacity-60">Chat-Up</h1>
                 <div 
                 onClick={() => handleLogin("/home")} 
