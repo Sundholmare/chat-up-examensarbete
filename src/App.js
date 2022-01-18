@@ -6,6 +6,8 @@ import {
   Routes
 } from "react-router-dom";
 import { auth } from './firebase';
+import ChatRoom from './components/ChatRoom';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/chat" element={<ChatRoom />} />
         </Routes>
       </Router>
     </div>
