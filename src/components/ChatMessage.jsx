@@ -1,8 +1,15 @@
 import React from 'react';
 
-const ChatMessage = ({message}) => {
+const ChatMessage = ({ message, user }) => {
+
+    console.log(message)
+
+    const side = user.uid === message.uid ? 'self-end bg-sent-blue rounded-md rounded-br-3xl ' : 'self-start bg-recieved-peach rounded-md rounded-bl-3xl ';
+
     return (
-        <h2>{message}</h2>
+        <div className={`${side} px-4 py-2 m-2 font-bold text-white chatShadow`}>
+            <h2>{message.text}</h2>
+        </div>
     )
 }
 

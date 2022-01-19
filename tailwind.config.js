@@ -7,7 +7,11 @@ module.exports = {
       colors: {
         'main-peach': '#EF7E77',
         'off-white': '#EFEFEF',
-        'strong-blue': '#78C4EF'
+        'sent-blue': '#78C4EF',
+        'recieved-peach': '#FE9595'
+      },
+      width: {
+        '9/10': '90%',
       }
     },
   },
