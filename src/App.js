@@ -1,3 +1,4 @@
+
 import './App.css';
 import Login from './components/Login';
 import {
@@ -8,6 +9,8 @@ import {
 import { auth } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import ChatRoom from './components/ChatRoom';
+import HomePage from "./components/HomePage";
+import Navbar from "./components/Navbar";
 
 
 function App() {
@@ -20,6 +23,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/chat" element={<ChatRoom user={user} />} />
+          <Route
+						exact
+						path="/home"
+						element={
+							<Navbar>
+								<HomePage />
+							</Navbar>
+						}
+					/>
         </Routes>
       </Router>
     </div>
