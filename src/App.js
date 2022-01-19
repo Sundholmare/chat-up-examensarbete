@@ -1,16 +1,29 @@
-import "./App.css";
-import Login from "./components/Login";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import './App.css';
+import Login from './components/Login';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
+import { auth } from './firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import ChatRoom from './components/ChatRoom';
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 
+
 function App() {
-	return (
-		<div className="App">
-			<Router>
-				<Routes>
-					<Route exact path="/" element={<Login />} />
-					<Route
+
+  const [user] = useAuthState(auth);
+
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/chat" element={<ChatRoom user={user} />} />
+          <Route
 						exact
 						path="/home"
 						element={
@@ -19,10 +32,10 @@ function App() {
 							</Navbar>
 						}
 					/>
-				</Routes>
-			</Router>
-		</div>
-	);
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
