@@ -1,6 +1,7 @@
+import ChatRoom from "./ChatRoom";
 import Navbar from "./Navbar";
 
-const HomePage = () => {
+const HomePage = ({ user }) => {
 	return (
 		<div className="flex body-height bg-slate-400">
 			<aside className="h-full bg-orange-500 w-96">
@@ -31,7 +32,9 @@ const HomePage = () => {
 					</li>
 				</ul>
 			</aside>
-			<main className="w-full bg-gray-50"></main>
+			<main className="w-full min-h-full bg-gray-50">
+				<ChatRoom user={user} />
+			</main>
 		</div>
 	);
 };
