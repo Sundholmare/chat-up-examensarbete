@@ -2,8 +2,19 @@
     box-shadow: 7px 12px 18px -1px rgba(0,0,0,0.61);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap%27');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
 .onHover:hover{
     transform: scale(1.03);
     box-shadow: 4px 8px 18px -1px rgba(0, 0, 0, 0.61);
     transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.inputFont{
+    font-family: 'Roboto', sans-serif;
 }
