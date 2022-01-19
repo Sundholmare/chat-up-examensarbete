@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import firebase from 'firebase/compat/app';
 import ChatMessage from './ChatMessage';
 
 
-const ChatRoom = () => {
+const ChatRoom = ({ user }) => {
 
     const [formData, setFormData] = useState('');
+
 
     const messagesRef = db.collection('messages');
     const query = messagesRef.orderBy('createdAt').limitToLast(25);
 
     const [messages] = useCollectionData(query, { idField: 'id' });
 
+
+
     console.log(messages)
+    console.log(user)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +35,7 @@ const ChatRoom = () => {
     return (
         <div className="flex flex-col justify-center items-center w-full h-full">
             <div className="flex flex-col">
-                {messages.map(message => {
+                {user && messages && messages.map(message => {
                     return <ChatMessage message={message.text} key={message.id} />
                 })}
             </div>

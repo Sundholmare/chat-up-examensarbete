@@ -6,16 +6,20 @@ import {
   Routes
 } from "react-router-dom";
 import { auth } from './firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import ChatRoom from './components/ChatRoom';
 
 
 function App() {
+
+  const [user] = useAuthState(auth);
+
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/chat" element={<ChatRoom />} />
+          <Route path="/chat" element={<ChatRoom user={user} />} />
         </Routes>
       </Router>
     </div>
