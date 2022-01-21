@@ -37,7 +37,12 @@ const ChatRoom = ({ user }) => {
 
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-full bg-off-white">
-			<div className="flex flex-col w-full overflow-scroll lg:w-3/4">
+			<div className="w-full h-20 bg-white border-b border-gray-300">
+				<h3 className="p-2 text-xl text-gray-600 ml-7">
+					Chat Of The Alpha Males
+				</h3>
+			</div>
+			<div className="flex flex-col w-full px-6 py-3 overflow-scroll">
 				{user &&
 					messages &&
 					messages.map((message) => {
@@ -49,21 +54,18 @@ const ChatRoom = ({ user }) => {
 			</div>
 
 			<form
-				className="flex justify-between w-full h-20 p-4 rounded-lg bg-main-peach lg:w-3/4"
+				className="flex justify-center w-full h-24 px-6 py-5 bg-white border-t border-gray-300 "
 				onSubmit={handleSubmit}
 			>
 				<input
-					className="w-4/5 h-full p-2 font-bold border-4 rounded-lg lg:w-9/10 inputFont"
+					className="w-4/5 h-full p-4 text-gray-800 rounded-lg bg-off-white lg:w-9/10 inputFont"
 					type="text"
 					placeholder="Chat here..."
 					value={formData}
 					onChange={(e) => setFormData(e.target.value)}
 				/>
-				<button
-					className="w-1/6 h-full p-2 bg-white rounded-lg lg:w-24"
-					type="submit"
-				>
-					{<FontAwesomeIcon icon={faPaperPlane} size="lg" />}
+				<button className="ml-6 text-strong-blue" type="submit">
+					{<FontAwesomeIcon icon={faPaperPlane} size="2x" color="#77CEFF" />}
 				</button>
 			</form>
 		</div>
