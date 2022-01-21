@@ -1,10 +1,40 @@
+import ChatRoom from "./ChatRoom";
 import Navbar from "./Navbar";
 
-const HomePage = () => {
+const HomePage = ({ user }) => {
 	return (
-		<div className="body-height bg-slate-400">
-			<h1>Welcome</h1>
-			<p>insert stuff here</p>
+		<div className="flex body-height bg-slate-400">
+			<aside className="h-full bg-white border-r border-gray-300 sidebar">
+				<ul>
+					<li className="px-3 py-5 m-3 text-center bg-red-200 rounded-md">
+						Chatt n stuff
+					</li>
+					<li className="px-3 py-5 m-3 text-center bg-white rounded-md">
+						Chatt n stuff
+					</li>
+					<li className="px-3 py-5 m-3 text-center bg-white rounded-md">
+						Chatt n stuff
+					</li>
+					<li className="px-3 py-5 m-3 text-center bg-white rounded-md">
+						Chatt n stuff
+					</li>
+					<li className="px-3 py-5 m-3 text-center bg-white rounded-md">
+						Chatt n stuff
+					</li>
+					<li className="px-3 py-5 m-3 text-center bg-white rounded-md">
+						Chatt n stuff
+					</li>
+					<li className="px-3 py-5 m-3 text-center bg-white rounded-md">
+						Chatt n stuff
+					</li>
+					<li className="px-3 py-5 m-3 text-center bg-white rounded-md">
+						Chatt n stuff
+					</li>
+				</ul>
+			</aside>
+			<main className="w-full min-h-full bg-gray-50">
+				<ChatRoom user={user} />
+			</main>
 		</div>
 	);
 };
