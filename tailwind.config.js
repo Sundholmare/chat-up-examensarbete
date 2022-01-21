@@ -11,7 +11,11 @@ module.exports = {
 			},
 			width: {
 				"9/10": "90%",
+				'extendedText' : '32rem'
 			},
+			height: {
+				'imageHeight': '35rem'
+			}
 		},
 	},
 	plugins: [],

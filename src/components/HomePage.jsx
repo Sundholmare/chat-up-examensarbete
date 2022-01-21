@@ -1,4 +1,5 @@
 import ChatRoom from "./ChatRoom";
+import LandingPage from "./LandingPage";
 import Navbar from "./Navbar";
 
 const HomePage = ({ user }) => {
@@ -32,8 +33,9 @@ const HomePage = ({ user }) => {
 					</li>
 				</ul>
 			</aside>
-			<main className="w-full min-h-full bg-gray-50">
+			<main className="w-full min-h-full bg-white">
 				<ChatRoom user={user} />
+				{/* <LandingPage /> */}
 			</main>
 		</div>
 	);

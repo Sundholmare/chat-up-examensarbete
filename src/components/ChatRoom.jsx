@@ -9,20 +9,19 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 const ChatRoom = ({ user }) => {
 	const [formData, setFormData] = useState("");
 	const [loggedUser, setLoggedUser] = useState(user !== null);
-	console.log(loggedUser);
 
-	const messagesRef = db.collection("messages");
-	const query = messagesRef.orderBy("createdAt").limitToLast(25);
+	const messagesRef = db.collection("rooms");
+	// const query = messagesRef.orderBy("createdAt").limitToLast(25);
 
-	const [messages] = useCollectionData(query, { idField: "id" });
+	const [messages] = useCollectionData(messagesRef, { idField: "id" });
+
+    console.log(messagesRef)
 
 	const dummy = useRef();
 
 	useEffect(() => {
 		dummy.current.scrollIntoView({ behavior: "smooth" });
 	}, [messages]);
-
-	console.log(user);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -34,6 +33,14 @@ const ChatRoom = ({ user }) => {
 		});
 		setFormData("");
 	};
+
+    const addCollection = () => {
+        db.collection('rooms').doc('testingRoom2').collection('messages').add({
+            message: 'Hjäääääääälp',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+			uid: user.uid
+        })
+    }
 
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-full bg-off-white">
@@ -50,6 +57,7 @@ const ChatRoom = ({ user }) => {
 							<ChatMessage message={message} key={message.id} user={user} />
 						);
 					})}
+                    <button onClick={addCollection}>Click</button>
 				<span ref={dummy}></span>
 			</div>
 
