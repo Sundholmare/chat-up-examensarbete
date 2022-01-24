@@ -35,7 +35,7 @@ const HomePage = ({ user }) => {
 			</aside>
 			<main className="w-full min-h-full bg-white">
 				<ChatRoom user={user} />
-				{/* <LandingPage /> */}
+				{/* <LandingPage user={user} /> */}
 			</main>
 		</div>
 	);

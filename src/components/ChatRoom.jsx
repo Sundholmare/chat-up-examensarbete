@@ -1,21 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from 'react-router';
 import { db } from "../firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase from "firebase/compat/app";
 import ChatMessage from "./ChatMessage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 const ChatRoom = ({ user }) => {
 	const [formData, setFormData] = useState("");
 	const [loggedUser, setLoggedUser] = useState(user !== null);
 
-	const messagesRef = db.collection("rooms");
+	const { id } = useParams();
+
+	console.log(id);
+
+	const messagesRef = db.collection('rooms').doc(id).collection('messages')
 	// const query = messagesRef.orderBy("createdAt").limitToLast(25);
 
 	const [messages] = useCollectionData(messagesRef, { idField: "id" });
+	
 
-    console.log(messagesRef)
+	console.log(messagesRef)
 
 	const dummy = useRef();
 
@@ -34,13 +41,6 @@ const ChatRoom = ({ user }) => {
 		setFormData("");
 	};
 
-    const addCollection = () => {
-        db.collection('rooms').doc('testingRoom2').collection('messages').add({
-            message: 'Hjäääääääälp',
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-			uid: user.uid
-        })
-    }
 
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-full bg-off-white">
@@ -57,7 +57,6 @@ const ChatRoom = ({ user }) => {
 							<ChatMessage message={message} key={message.id} user={user} />
 						);
 					})}
-                    <button onClick={addCollection}>Click</button>
 				<span ref={dummy}></span>
 			</div>
 
