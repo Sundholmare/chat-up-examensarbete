@@ -3,8 +3,11 @@ import groupChat from '../images/Group-Chat-Illustration.jpg';
 import Modal from './Modal';
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
+import {useNavigate} from 'react-router-dom';
 
-const LandingPage = ({ user }) => {
+const LandingPage = ({ user,setChatOpen }) => {
+
+    const navigate = useNavigate();
 
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState('');
@@ -22,8 +25,11 @@ const LandingPage = ({ user }) => {
         })
         .then((docRef) => {
             console.log('ID:', docRef.id)
+            setChatOpen(true);
+            handleToggleModal();
+            navigate(`/home/${docRef.id}`);
         })
-        
+
     }
     
     return (

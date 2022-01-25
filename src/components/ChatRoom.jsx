@@ -8,11 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { text } from "@fortawesome/fontawesome-svg-core";
 
-const ChatRoom = ({ user }) => {
+const ChatRoom = ({ user, id, chatName }) => {
 	const [formData, setFormData] = useState("");
 	const [loggedUser, setLoggedUser] = useState(user !== null);
-
-	const { id } = useParams();
 
 	console.log(id);
 
@@ -45,9 +43,7 @@ const ChatRoom = ({ user }) => {
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-full bg-off-white">
 			<div className="w-full h-20 bg-white border-b border-gray-300">
-				<h3 className="p-2 text-xl text-gray-600 ml-7">
-					Chat Of The Alpha Males
-				</h3>
+				<h3 className="p-2 text-xl text-gray-600 ml-7">{chatName}</h3>
 			</div>
 			<div className="flex flex-col w-full px-6 py-3 overflow-scroll">
 				{user &&
