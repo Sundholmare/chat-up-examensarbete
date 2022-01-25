@@ -4,7 +4,7 @@ import pfp from "../images/pfp.jpeg";
 const Navbar = ({ children }) => {
 	return (
 		<div>
-			<div className="relative flex items-center justify-between px-5 bg-main-peach nav-height nav-shadow">
+			<div className="relative z-10 flex items-center justify-between px-5 bg-main-peach nav-height nav-shadow">
 				<div className="w-16">
 					<img src={chatIcon} className="rounded-full" alt="chat-logo" />
 				</div>
