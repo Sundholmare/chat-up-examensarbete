@@ -1,28 +1,32 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from 'react-router';
 import { db } from "../firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase from "firebase/compat/app";
 import ChatMessage from "./ChatMessage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
-const ChatRoom = ({ user }) => {
+const ChatRoom = ({ user, id, chatName }) => {
 	const [formData, setFormData] = useState("");
 	const [loggedUser, setLoggedUser] = useState(user !== null);
-	console.log(loggedUser);
 
-	const messagesRef = db.collection("messages");
-	const query = messagesRef.orderBy("createdAt").limitToLast(25);
+	console.log(id);
 
-	const [messages] = useCollectionData(query, { idField: "id" });
+	const messagesRef = db.collection('rooms').doc(id).collection('messages')
+	// const query = messagesRef.orderBy("createdAt").limitToLast(25);
+
+	const [messages] = useCollectionData(messagesRef, { idField: "id" });
+	
+
+	console.log(messagesRef)
 
 	const dummy = useRef();
 
 	useEffect(() => {
 		dummy.current.scrollIntoView({ behavior: "smooth" });
 	}, [messages]);
-
-	console.log(user);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -35,12 +39,11 @@ const ChatRoom = ({ user }) => {
 		setFormData("");
 	};
 
+
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-full bg-off-white">
 			<div className="w-full h-20 bg-white border-b border-gray-300">
-				<h3 className="p-2 text-xl text-gray-600 ml-7">
-					Chat Of The Alpha Males
-				</h3>
+				<h3 className="p-2 text-xl text-gray-600 ml-7">{chatName}</h3>
 			</div>
 			<div className="flex flex-col w-full px-6 py-3 overflow-scroll">
 				{user &&

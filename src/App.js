@@ -14,10 +14,9 @@ function App() {
 		<div className="App">
 			<Router>
 				<Routes>
-					<Route path="/" element={<Login />} />
-					{/* <Route path="/chat" element={<ChatRoom user={user} />} /> */}
+					<Route exact path="/" element={<Login />} />
+					{/* <Route path="/home/chat/:id" element={<ChatRoom user={user} />} /> */}
 					<Route
-						exact
 						path="/home"
 						element={
 							<Navbar>
