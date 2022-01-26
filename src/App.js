@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
 	const [user] = useAuthState(auth);
-	console.log(user)
+	console.log(user);
 
 	return (
 		<div className="App">
@@ -20,7 +20,7 @@ function App() {
 					<Route
 						path="/home"
 						element={
-							<Navbar>
+							<Navbar user={user}>
 								<HomePage user={user} />
 							</Navbar>
 						}
