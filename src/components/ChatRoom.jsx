@@ -15,12 +15,12 @@ const ChatRoom = ({ user, id, chatName }) => {
 	console.log(id);
 
 	const messagesRef = db.collection('rooms').doc(id).collection('messages')
-	// const query = messagesRef.orderBy("createdAt").limitToLast(25);
+	const query = messagesRef.orderBy("createdAt");
 
-	const [messages] = useCollectionData(messagesRef, { idField: "id" });
+	const [messages] = useCollectionData(query, { idField: "id" });
 	
 
-	console.log(messagesRef)
+	console.log(messages)
 
 	const dummy = useRef();
 
