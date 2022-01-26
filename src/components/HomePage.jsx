@@ -15,8 +15,6 @@ const HomePage = ({ user }) => {
 
 	const [messageRooms] = useCollectionData(messageRoomsRef, { idField: "id" });
 
-	console.log(messageRooms);
-
 	const handleClick = (id, name) => {
 		setCurrentId(id);
 		setCurrentChat(name);

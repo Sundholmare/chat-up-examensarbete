@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
 	const [user] = useAuthState(auth);
+	console.log(user)
 
 	return (
 		<div className="App">

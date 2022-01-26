@@ -12,14 +12,11 @@ const ChatRoom = ({ user, id, chatName }) => {
 	const [formData, setFormData] = useState("");
 	const [loggedUser, setLoggedUser] = useState(user !== null);
 
-	console.log(id);
-
 	const messagesRef = db.collection("rooms").doc(id).collection("messages");
-	// const query = messagesRef.orderBy("createdAt").limitToLast(25);
+	const query = messagesRef.orderBy("createdAt");
 
-	const [messages] = useCollectionData(messagesRef, { idField: "id" });
+	const [messages] = useCollectionData(query, { idField: "id" });
 
-	console.log(messagesRef);
 
 	const dummy = useRef();
 
@@ -34,6 +31,8 @@ const ChatRoom = ({ user, id, chatName }) => {
 			text: formData,
 			createdAt: firebase.firestore.FieldValue.serverTimestamp(),
 			uid: user.uid,
+			image: user.photoURL,
+			displayName: user.displayName
 		});
 		setFormData("");
 	};
