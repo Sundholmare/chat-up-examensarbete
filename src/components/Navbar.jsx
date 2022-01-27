@@ -32,7 +32,7 @@ const Navbar = ({ children, user }) => {
 						{user && user.displayName}
 					</h3>
 					<div className="w-12 overflow-hidden rounded-full">
-						<img src={user.photoURL} alt="" />
+						{user && <img src={user.photoURL} alt="" />}
 					</div>
 				</div>
 			</div>
