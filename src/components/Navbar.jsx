@@ -1,5 +1,4 @@
 import chatIcon from "../images/chat+icon-1320184411998302345.png";
-import pfp from "../images/pfp.jpeg";
 
 const Navbar = ({ children, user }) => {
 	console.log(user);
@@ -14,7 +13,7 @@ const Navbar = ({ children, user }) => {
 						{user && user.displayName}
 					</h3>
 					<div className="w-16 overflow-hidden rounded-full">
-						<img src={pfp} alt="" />
+						{user && <img src={user.photoURL} alt="" />}
 					</div>
 				</div>
 			</div>
