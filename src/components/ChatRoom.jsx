@@ -18,8 +18,6 @@ const ChatRoom = ({ user, id, chatName }) => {
 	const [messages] = useCollectionData(query, { idField: "id" });
 	
 
-	console.log(messages)
-
 	const dummy = useRef();
 
 	useEffect(() => {
