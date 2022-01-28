@@ -40,23 +40,25 @@ const HomePage = ({ user }) => {
 			) : (
 				<div className="flex body-height bg-slate-400">
 					<aside className="h-full bg-white border-r border-gray-300 sidebar group">
+						<div
+							className={
+								chatOpen
+									? "relative h-12 p-2 text-xl font-bold tracking-wide text-center text-white transition-all ease-in-out rounded-b-lg cursor-pointer group-hover:top-0 -top-10 bg-sent-blue nav-shadow"
+									: " hidden"
+							}
+							onClick={() => setChatOpen(false)}
+						>
+							Close current chatroom
+						</div>
 						<ul>
-							<li
-								className={
-									chatOpen
-										? "relative h-12 p-2 text-xl font-bold tracking-wide text-center text-white transition-all ease-in-out rounded-b-lg cursor-pointer group-hover:top-0 -top-10 bg-sent-blue nav-shadow"
-										: " hidden"
-								}
-								onClick={() => setChatOpen(false)}
-							>
-								Close current chatroom
-							</li>
 							{messageRooms &&
 								messageRooms.map((room) => {
 									return (
 										<li
 											onClick={() => handleClick(room.id, room.name)}
-											className="flex flex-col px-3 py-5 m-3 text-center rounded-md cursor-pointer nav-shadow"
+
+											className="flex flex-col px-3 py-5 m-3 rounded-md cursor-pointer"
+
 											key={room.id}
 										>
 											<h2 className="text-2xl font-bold">{room.name}</h2>
