@@ -6,7 +6,6 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ children, user }) => {
-	console.log(user);
 
 	const navigate = useNavigate();
 
