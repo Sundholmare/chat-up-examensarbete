@@ -1,6 +1,6 @@
 import ChatRoom from "./ChatRoom";
 import LandingPage from "./LandingPage";
-import Navbar from "./Navbar";
+import Loader from "./Loader";
 import { useState } from "react";
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
@@ -25,9 +25,7 @@ const HomePage = ({ user }) => {
 	return (
 		<>
 			{user === null ? (
-				<h1 className="w-full h-screen mx-auto text-4xl text-center text-red-700 bg-red-200 pt-44">
-					You need to log in, Dumbass!!
-				</h1>
+				<Loader />
 			) : (
 				<div className="flex body-height bg-slate-400">
 					<aside className="h-full bg-white border-r border-gray-300 sidebar group">
