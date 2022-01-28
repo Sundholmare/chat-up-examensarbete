@@ -5,13 +5,13 @@ import { useState } from "react";
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSkullCrossbones } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = ({ user }) => {
 	const [chatOpen, setChatOpen] = useState(false);
 	const [currentId, setCurrentId] = useState("");
 	const [currentChat, setCurrentChat] = useState("");
-
-	console.log(user);
 
 	const messageRoomsRef = db.collection("rooms");
 
@@ -22,6 +22,15 @@ const HomePage = ({ user }) => {
 		setCurrentChat(name);
 		setChatOpen(true);
 	};
+
+	const handleDelete = (id) => {
+		db.collection('rooms').doc(id).delete().then(() => {
+			console.log('Document successfully deleted!');
+		}).catch(err => {
+			console.error('Error: ', err)
+		})
+	};
+
 	return (
 		<>
 			{user === null ? (
@@ -47,11 +56,14 @@ const HomePage = ({ user }) => {
 									return (
 										<li
 											onClick={() => handleClick(room.id, room.name)}
-											className="px-3 py-5 m-3 rounded-md cursor-pointer "
+
+											className="flex flex-col px-3 py-5 m-3 rounded-md cursor-pointer"
+
 											key={room.id}
 										>
 											<h2 className="text-2xl font-bold">{room.name}</h2>
 											<p>{room.creatorId}</p>
+											<FontAwesomeIcon className="self-end text-red-600 text-2xl" onClick={() => handleDelete(room.id)} icon={faSkullCrossbones} />
 										</li>
 									);
 								})}
