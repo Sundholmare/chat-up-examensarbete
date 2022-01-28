@@ -1,5 +1,6 @@
 import React from "react";
 import chatIcon from "../images/chat+icon-1320184411998302345.png";
+import pfp from "../images/pfp.jpeg";
 import firebase from "firebase/compat/app";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +33,7 @@ const Navbar = ({ children, user }) => {
 						{user && user.displayName}
 					</h3>
 					<div className="w-12 overflow-hidden rounded-full">
-						{user && <img src={user.photoURL} alt="" />}
+						<img src={pfp} alt="" />
 					</div>
 				</div>
 			</div>
