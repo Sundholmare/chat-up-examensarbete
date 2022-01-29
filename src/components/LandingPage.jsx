@@ -3,6 +3,7 @@ import groupChat from '../images/Group-Chat-Illustration.jpg';
 import Modal from './Modal';
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
+import ChatRoom from './ChatRoom';
 
 const LandingPage = ({ user,setChatOpen }) => {
 

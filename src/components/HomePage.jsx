@@ -14,8 +14,9 @@ const HomePage = ({ user }) => {
 	const [currentChat, setCurrentChat] = useState("");
 
 	const messageRoomsRef = db.collection("rooms");
+	const query = messageRoomsRef.orderBy("createdAt");
 
-	const [messageRooms] = useCollectionData(messageRoomsRef, { idField: "id" });
+	const [messageRooms] = useCollectionData(query, { idField: "id" });
 
 	const handleClick = (id, name) => {
 		setCurrentId(id);
@@ -52,12 +53,14 @@ const HomePage = ({ user }) => {
 						</div>
 						<ul>
 							{messageRooms &&
-								messageRooms.map((room) => {
+								messageRooms.reverse().map((room) => {
+									console.log(room)
 									return (
 										<li
 											onClick={() => handleClick(room.id, room.name)}
 
-											className="flex flex-col px-3 py-5 m-3 rounded-md cursor-pointer"
+											className={`flex flex-col px-3 py-5 m-3 rounded-md cursor-pointer 
+											${room.creatorId === user.uid ? 'bg-blue-200' : 'bg-red-200'}`}
 
 											key={room.id}
 										>
