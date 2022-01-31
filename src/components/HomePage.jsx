@@ -5,8 +5,7 @@ import { useState } from "react";
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSkullCrossbones } from "@fortawesome/free-solid-svg-icons";
+import ChatListItem from "./ChatListItem";
 
 const HomePage = ({ user }) => {
 	const [chatOpen, setChatOpen] = useState(false);
@@ -25,11 +24,15 @@ const HomePage = ({ user }) => {
 	};
 
 	const handleDelete = (id) => {
-		db.collection('rooms').doc(id).delete().then(() => {
-			console.log('Document successfully deleted!');
-		}).catch(err => {
-			console.error('Error: ', err)
-		})
+		if(window.confirm('Are you sure you want to delete this room?')){
+			db.collection('rooms').doc(id).delete().then(() => {
+				console.log('Document successfully deleted!');
+			}).catch(err => {
+				console.error('Error: ', err)
+			})
+		}else{
+			console.log('Action canceled.')
+		}
 	};
 
 	return (
@@ -51,24 +54,16 @@ const HomePage = ({ user }) => {
 						>
 							Close current chatroom
 						</div>
-						<ul>
+						<ul className="h-full overflow-scroll">
 							{messageRooms &&
 								messageRooms.reverse().map((room) => {
-									console.log(room)
-									return (
-										<li
-											onClick={() => handleClick(room.id, room.name)}
-
-											className={`flex flex-col px-3 py-5 m-3 rounded-md cursor-pointer 
-											${room.creatorId === user.uid ? 'bg-blue-200' : 'bg-red-200'}`}
-
-											key={room.id}
-										>
-											<h2 className="text-2xl font-bold">{room.name}</h2>
-											<p>{room.creatorId}</p>
-											<FontAwesomeIcon className="self-end text-red-600 text-2xl" onClick={() => handleDelete(room.id)} icon={faSkullCrossbones} />
-										</li>
-									);
+									return <ChatListItem
+									key={room.id}
+									user={user} 
+									room={room} 
+									handleClick={handleClick}
+									handleDelete={handleDelete}
+									/>
 								})}
 						</ul>
 					</aside>
