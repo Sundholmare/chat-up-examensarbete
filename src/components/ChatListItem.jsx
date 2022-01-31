@@ -12,6 +12,7 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 	const [messagesCount] = useCollectionData(query, { idField: "id" });
 
     const count = messagesCount && messagesCount.length;
+    const last = messagesCount && messagesCount[messagesCount.length - 1];
 
     return (
         <li
@@ -21,6 +22,7 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
         >
             <h2 className="text-2xl font-bold">{room.name}</h2>
             <p>Chats: {count}</p>
+            <p>Latest: {messagesCount && last.text}</p>
             <FontAwesomeIcon className="self-end text-red-600 text-2xl" onClick={() => handleDelete(room.id)} icon={faSkullCrossbones} />
         </li>
     )
