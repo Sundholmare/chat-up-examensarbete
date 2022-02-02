@@ -24,14 +24,18 @@ const HomePage = ({ user }) => {
 	};
 
 	const handleDelete = (id) => {
-		if(window.confirm('Are you sure you want to delete this room?')){
-			db.collection('rooms').doc(id).delete().then(() => {
-				console.log('Document successfully deleted!');
-			}).catch(err => {
-				console.error('Error: ', err)
-			})
-		}else{
-			console.log('Action canceled.')
+		if (window.confirm("Are you sure you want to delete this room?")) {
+			db.collection("rooms")
+				.doc(id)
+				.delete()
+				.then(() => {
+					console.log("Document successfully deleted!");
+				})
+				.catch((err) => {
+					console.error("Error: ", err);
+				});
+		} else {
+			console.log("Action canceled.");
 		}
 	};
 
@@ -41,11 +45,11 @@ const HomePage = ({ user }) => {
 				<Loader />
 			) : (
 				<div className="flex body-height bg-slate-400">
-					<aside className="h-full bg-white border-r border-gray-300 sidebar group">
+					<aside className="h-full bg-white border-r border-grey-300 sidebar">
 						<div
 							className={
 								chatOpen
-									? "relative h-12 p-2 text-xl font-bold tracking-wide text-center text-white transition-all ease-in-out rounded-b-lg cursor-pointer group-hover:top-0 -top-10 bg-sent-blue nav-shadow"
+									? "relative h-12 p-2 text-xl font-bold tracking-wide text-center text-white transition-all ease-in-out rounded-b-lg cursor-pointer hover:top-0 -top-10 bg-sent-blue nav-shadow"
 									: " hidden"
 							}
 							onClick={() => setChatOpen(false)}
@@ -55,13 +59,15 @@ const HomePage = ({ user }) => {
 						<ul className="h-full overflow-scroll">
 							{messageRooms &&
 								messageRooms.reverse().map((room) => {
-									return <ChatListItem
-									key={room.id}
-									user={user} 
-									room={room} 
-									handleClick={handleClick}
-									handleDelete={handleDelete}
-									/>
+									return (
+										<ChatListItem
+											key={room.id}
+											user={user}
+											room={room}
+											handleClick={handleClick}
+											handleDelete={handleDelete}
+										/>
+									);
 								})}
 						</ul>
 					</aside>
