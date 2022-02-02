@@ -22,7 +22,7 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
         >
             <h2 className="text-2xl font-bold">{room.name}</h2>
             <p>Chats: {count}</p>
-            <p>Latest: {messagesCount && last.text}</p>
+            <p><strong>Latest:</strong> {messagesCount && last.text.slice(0, 35)}...</p>
             <FontAwesomeIcon className="self-end text-red-600 text-2xl" onClick={() => handleDelete(room.id)} icon={faSkullCrossbones} />
         </li>
     )
