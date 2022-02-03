@@ -56,7 +56,7 @@ const HomePage = ({ user }) => {
 						>
 							Close current chatroom
 						</div>
-						<ul className="h-full overflow-scroll">
+						<ul className={`h-full ${messageRooms && messageRooms.length >= 10 && 'overflow-scroll'}`}>
 							{messageRooms &&
 								messageRooms.reverse().map((room) => {
 									return (
