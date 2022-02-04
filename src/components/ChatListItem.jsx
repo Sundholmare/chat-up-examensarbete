@@ -28,11 +28,12 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 					<p className="text-gray-500">Messages: {count}</p>
 				</div>
 
-				<FontAwesomeIcon
-					className="invisible text-2xl text-red-400 group-hover:visible"
-					onClick={() => handleDelete(room.id)}
-					icon={faSkullCrossbones}
-				/>
+				{user.uid === room.creatorId &&
+					<FontAwesomeIcon
+						className="invisible text-2xl text-red-400 group-hover:visible"
+						onClick={() => handleDelete(room.id)}
+						icon={faSkullCrossbones}
+					/>}
 			</div>
 
 			<p className="mt-1 text-gray-500">
