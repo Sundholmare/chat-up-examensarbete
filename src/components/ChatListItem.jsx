@@ -13,6 +13,8 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 	const count = messagesCount && messagesCount.length;
 	const last = messagesCount && messagesCount[messagesCount.length - 1];
 
+	console.log(messagesCount)
+
 	return (
 		<li
 			onClick={() => handleClick(room.id, room.name)}
@@ -28,18 +30,20 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 					<p className="text-gray-500">Messages: {count}</p>
 				</div>
 
-				<FontAwesomeIcon
-					className="invisible text-2xl text-red-400 group-hover:visible"
-					onClick={() => handleDelete(room.id)}
-					icon={faSkullCrossbones}
-				/>
+				{user.uid === room.creatorId &&
+					<FontAwesomeIcon
+						className="invisible text-2xl text-red-400 group-hover:visible"
+						onClick={() => handleDelete(room.id)}
+						icon={faSkullCrossbones}
+					/>}
 			</div>
 
+			{messagesCount.length > 0 && 
 			<p className="mt-1 text-gray-500">
 				{messagesCount && last.text.length > 35
 					? messagesCount && last.text.slice(0, 35) + "..."
 					: messagesCount && last.text}
-			</p>
+			</p>}
 		</li>
 	);
 };
