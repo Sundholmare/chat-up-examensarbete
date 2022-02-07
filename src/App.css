@@ -50,8 +50,8 @@ body {
 	animation: spin 2s linear infinite;
 }
 
-.imageBg{
-	background-image: url(./images/svg\ \(1\).png);
+.imageBg {
+	background-image: url("./images/svg\ \(1\).png");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
