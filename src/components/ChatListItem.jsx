@@ -41,7 +41,7 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 			{messagesCount.length > 0 && 
 			<p className="mt-1 text-gray-500">
 				{messagesCount && last.text.length > 35
-					? last.text.slice(0, 35) + "..."
+					? messagesCount && last.text.slice(0, 35) + "..."
 					: messagesCount && last.text}
 			</p>}
 		</li>
