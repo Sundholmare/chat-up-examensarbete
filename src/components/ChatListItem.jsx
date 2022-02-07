@@ -38,7 +38,7 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 					/>}
 			</div>
 
-			{messagesCount.length > 0 && 
+			{messagesCount && messagesCount.length > 0 && 
 			<p className="mt-1 text-gray-500">
 				{messagesCount && last.text.length > 35
 					? messagesCount && last.text.slice(0, 35) + "..."

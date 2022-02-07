@@ -30,6 +30,7 @@ const HomePage = ({ user }) => {
 				.delete()
 				.then(() => {
 					console.log("Document successfully deleted!");
+					setChatOpen(false);
 				})
 				.catch((err) => {
 					console.error("Error: ", err);
