@@ -16,7 +16,6 @@ function App() {
 			<Router>
 				<Routes>
 					<Route exact path="/" element={<Login />} />
-					{/* <Route path="/home/chat/:id" element={<ChatRoom user={user} />} /> */}
 					<Route
 						path="/home"
 						element={

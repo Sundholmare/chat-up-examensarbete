@@ -20,6 +20,7 @@ const LandingPage = ({ user,setChatOpen }) => {
             name: modalData,
 			createdAt: firebase.firestore.FieldValue.serverTimestamp(),
 			creatorId: user.uid,
+            creatorName: user.displayName
         })
         .then((docRef) => {
             console.log('ID:', docRef.id)
@@ -33,20 +34,24 @@ const LandingPage = ({ user,setChatOpen }) => {
             <Modal
             handleToggleModal={handleToggleModal}
             show={showModal}>
-                <div className="flex w-full h-full justify-center items-center">
+                
+                <div className="flex flex-col w-full h-full justify-center items-center">
+                    {/* <h1 className="text-5xl text-sent-blue">Chat-Up</h1> */}
                     <form
-                    className="flex flex-col justify-center items-center bg-recieved-peach text-white justify-around h-2/4 p-8 rounded-xl"
+                    className="flex flex-col justify-around h-2/5 rounded-xl"
                     onSubmit={handleSubmit}>
-                        <label className="font-bold text-xl">Name of your chatroom:</label>
+                        <label className="text-xl">Name of your chatroom:</label>
                         <input
-                        className="rounded-xl p-2 text-black"
+                        className="rounded-lg bg-gray-200 p-2 text-black"
+                        placeholder="Hello strangers!"
                         type="text" 
                         onChange={(e) => setModalData(e.target.value)} />
                         <button
-                        className="p-2 w-32 font-bold bg-sent-blue rounded-xl"
+                        className="p-2 w-32 font-bold bg-sent-blue text-white rounded-xl"
                         type="submit">Create</button>
                     </form>
                 </div>
+                <div className="w-20 h-full bg-sent-blue rounded-r-xl" ></div>
             </Modal>
             <div className="bg-white w-10">
 
