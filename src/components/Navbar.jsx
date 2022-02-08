@@ -6,7 +6,6 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ children, user }) => {
-
 	const navigate = useNavigate();
 
 	const handleLogOut = async (page) => {
@@ -17,9 +16,9 @@ const Navbar = ({ children, user }) => {
 
 	return (
 		<div>
-			<div className="relative z-10 flex items-center justify-between px-5 bg-main-peach nav-height nav-shadow">
-				<div className="w-16">
-					<img src={chatIcon} className="rounded-full" alt="chat-logo" />
+			<div className="relative z-10 flex items-center justify-between px-5 bg-sent-blue nav-height nav-shadow">
+				<div className="text-4xl text-white logo-font">
+					<h1>CHAT-UP</h1>
 				</div>
 				<div className="flex items-center">
 					<h3
@@ -31,7 +30,7 @@ const Navbar = ({ children, user }) => {
 					<h3 className="mr-4 font-semibold text-white">
 						{user && user.displayName}
 					</h3>
-					<div className="w-12 overflow-hidden rounded-full">
+					<div className="w-10 overflow-hidden rounded-full">
 						<img src={user && user.photoURL} alt="" />
 					</div>
 				</div>

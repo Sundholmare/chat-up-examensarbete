@@ -3,6 +3,7 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap%27");
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
 body {
 	margin: 0;
@@ -25,11 +26,11 @@ body {
 }
 
 .nav-height {
-	height: 5rem;
+	height: 5vh;
 }
 
 .body-height {
-	height: 92vh;
+	height: 95vh;
 }
 
 .nav-shadow {
@@ -55,6 +56,10 @@ body {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.logo-font {
+	font-family: "Staatliches", cursive;
 }
 
 @keyframes spin {

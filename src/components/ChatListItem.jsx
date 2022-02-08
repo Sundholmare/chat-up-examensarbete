@@ -13,37 +13,39 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 	const count = messagesCount && messagesCount.length;
 	const last = messagesCount && messagesCount[messagesCount.length - 1];
 
-	console.log(messagesCount)
+	console.log(messagesCount);
 
 	return (
 		<li
 			onClick={() => handleClick(room.id, room.name)}
-			className="flex flex-col px-3 py-4 border-b cursor-pointer border-grey-300 hover:bg-stone-100 group"
+			className="flex flex-col px-3 py-4 mb-4 rounded-lg cursor-pointer bg-dark hover:bg-light-dark group"
 			key={room.id}
 		>
 			<div className="flex items-center justify-between">
 				<div className="flex items-center">
-					<h2 className="text-xl font-bold text-gray-700">
+					<h2 className="text-xl font-bold text-white">
 						{room.name.length > 20 ? room.name.slice(0, 20) + "..." : room.name}
 					</h2>
 					<p className="mx-2 text-gray-500">•</p>
-					<p className="text-gray-500">Messages: {count}</p>
+					<p className="text-gray-200">Messages: {count}</p>
 				</div>
 
-				{user.uid === room.creatorId &&
+				{user.uid === room.creatorId && (
 					<FontAwesomeIcon
 						className="invisible text-2xl text-red-400 group-hover:visible"
 						onClick={() => handleDelete(room.id)}
 						icon={faSkullCrossbones}
-					/>}
+					/>
+				)}
 			</div>
 
-			{messagesCount && messagesCount.length > 0 && 
-			<p className="mt-1 text-gray-500">
-				{messagesCount && last.text.length > 35
-					? messagesCount && last.text.slice(0, 35) + "..."
-					: messagesCount && last.text}
-			</p>}
+			{messagesCount && messagesCount.length > 0 && (
+				<p className="mt-1 text-gray-300">
+					{messagesCount && last.text.length > 35
+						? messagesCount && last.text.slice(0, 35) + "..."
+						: messagesCount && last.text}
+				</p>
+			)}
 		</li>
 	);
 };

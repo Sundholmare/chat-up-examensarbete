@@ -5,18 +5,22 @@ module.exports = {
 			colors: {
 				"main-peach": "#EF7E77",
 				"off-white": "#EFEFEF",
-				"sent-blue": "#78C4EF",
-				"recieved-peach": "#FE9595",
+				"sent-blue": "#78A7EF",
+				"recieved-peach": "#FF8080",
 				"chat-grey": "#E7E7E7",
-				overlay: 'rgba(0, 0, 0, 0.5)',
+				darkest: "#232735",
+				darker: "#2B2F3F",
+				dark: "#373B51",
+				"light-dark": "#40445C",
+				overlay: "rgba(0, 0, 0, 0.5)",
 			},
 			width: {
 				"9/10": "90%",
-				'extendedText' : '32rem'
+				extendedText: "32rem",
 			},
 			height: {
-				'imageHeight': '35rem'
-			}
+				imageHeight: "35rem",
+			},
 		},
 	},
 	plugins: [],

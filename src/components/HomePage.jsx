@@ -45,9 +45,9 @@ const HomePage = ({ user }) => {
 			{user === null ? (
 				<Loader />
 			) : (
-				<div className="flex body-height bg-slate-400">
-					<aside className="relative h-full pt-3 bg-white border-r border-grey-300 sidebar">
-						<div
+				<div className="flex p-4 bg-darkest body-height">
+					<aside className="relative h-full p-3 mr-3 rounded-lg bg-darker sidebar">
+						{/* 						<div
 							className={
 								chatOpen
 									? "absolute h-12 p-2 text-xl w-full font-bold tracking-wide text-center text-white transition-all ease-in-out rounded-b-lg cursor-pointer hover:top-0 -top-10 bg-sent-blue nav-shadow"
@@ -56,8 +56,12 @@ const HomePage = ({ user }) => {
 							onClick={() => setChatOpen(false)}
 						>
 							Close current chatroom
-						</div>
-						<ul className={`h-full ${messageRooms && messageRooms.length >= 10 && 'overflow-scroll'}`}>
+						</div> */}
+						<ul
+							className={`h-full ${
+								messageRooms && messageRooms.length >= 10 && "overflow-scroll"
+							}`}
+						>
 							{messageRooms &&
 								messageRooms.reverse().map((room) => {
 									return (
