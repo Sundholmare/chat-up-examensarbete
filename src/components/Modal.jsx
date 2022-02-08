@@ -18,7 +18,7 @@ const Modal = ({ show, handleToggleModal, children }) => {
     const modalContent = show ? (
         <div>
             <div onClick={handleCloseClick} className="absolute top-0 left-0 bg-overlay z-20 h-full w-full" />
-            <div className="w-1/4 h-2/5 bg-white top-2/4 left-2/4 absolute flex rounded-xl z-30 transform
+            <div className="w-1/4 h-2/5 bg-dark top-2/4 left-2/4 absolute flex rounded-xl z-30 transform
                         -translate-y-2/4 -translate-x-2/4 flex">
                 {children}
             </div>
