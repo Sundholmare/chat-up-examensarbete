@@ -62,6 +62,26 @@ body {
 	font-family: "Staatliches", cursive;
 }
 
+.customScroll{
+	scrollbar-width: thin;
+	scrollbar-color: #373B51 #232735;	
+	margin: 5px 0;
+}
+
+.customScroll::-webkit-scrollbar{
+	width: 12px;
+}
+
+.customScroll::-webkit-scrollbar-track{
+	background: #232735;
+	margin: 5px 0;
+}
+
+.customScroll::-webkit-scrollbar-thumb{
+	background: #78A7EF;
+	border-radius: 30px;
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);

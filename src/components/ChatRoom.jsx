@@ -43,7 +43,7 @@ const ChatRoom = ({ user, id, chatName }) => {
 			<div className="w-full rounded-lg bg-darker">
 				<h3 className="p-2 text-xl text-white ml-7">{chatName}</h3>
 			</div>
-			<div className="flex flex-col w-full h-full px-6 py-3 overflow-y-auto overflow-x-hidden">
+			<div className="customScroll flex flex-col w-full h-full px-6 py-3 overflow-y-auto overflow-x-hidden">
 				{user &&
 					messages &&
 					messages.map((message) => {
