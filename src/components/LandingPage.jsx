@@ -34,7 +34,7 @@ const LandingPage = ({ user, setChatOpen }) => {
 				<div className="flex flex-col items-center justify-center w-full h-full">
 					{/* <h1 className="text-5xl text-sent-blue">Chat-Up</h1> */}
 					<form
-						className="flex flex-col justify-around h-2/5 rounded-xl"
+						className="flex flex-col text-white justify-around h-2/5 rounded-xl"
 						onSubmit={handleSubmit}
 					>
 						<label className="text-xl">Name of your chatroom:</label>
