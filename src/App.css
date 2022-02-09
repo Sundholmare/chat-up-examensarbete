@@ -65,7 +65,7 @@ body {
 .customScroll{
 	scrollbar-width: thin;
 	scrollbar-color: #373B51 #232735;	
-	margin: 5px 0;
+	margin: 2px 0;
 }
 
 .customScroll::-webkit-scrollbar{
@@ -74,11 +74,11 @@ body {
 
 .customScroll::-webkit-scrollbar-track{
 	background: #232735;
-	margin: 5px 0;
+	margin: 2px 0;
 }
 
 .customScroll::-webkit-scrollbar-thumb{
-	background: #78A7EF;
+	background: #373B51;
 	border-radius: 30px;
 }
 
