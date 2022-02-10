@@ -3,6 +3,7 @@ import { faSkullCrossbones } from "@fortawesome/free-solid-svg-icons";
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 
 const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 	const messages = db.collection("rooms").doc(room.id).collection("messages");
@@ -13,7 +14,26 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 	const count = messagesCount && messagesCount.length;
 	const last = messagesCount && messagesCount[messagesCount.length - 1];
 
-	console.log(messagesCount);
+	Confirm.init({
+		fontFamily: 'Roboto',
+		titleColor: '#78A7EF',
+		okButtonBackground: '#78A7EF',
+	})
+
+	const confirmDelete = () => {
+		Confirm.show(
+			'Confirm to delete',
+			'Do you want to delete this room?',
+			'Yes',
+			'No',
+			() => {
+				handleDelete(room.id);
+			},
+			() => {
+				console.log('room not deleted');
+			}
+		)
+	}
 
 	return (
 		<li
@@ -30,10 +50,10 @@ const ChatListItem = ({ user, room, handleClick, handleDelete }) => {
 					<p className="text-gray-200">Messages: {count}</p>
 				</div>
 
-				{user.uid === room.creatorId && (
+				{user && user.uid === room.creatorId && (
 					<FontAwesomeIcon
 						className="invisible text-2xl text-red-400 group-hover:visible"
-						onClick={() => handleDelete(room.id)}
+						onClick={() => confirmDelete()}
 						icon={faSkullCrossbones}
 					/>
 				)}

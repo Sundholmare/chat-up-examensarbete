@@ -4,15 +4,37 @@ import pfp from "../images/pfp.jpeg";
 import firebase from "firebase/compat/app";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 
 const Navbar = ({ children, user }) => {
 	const navigate = useNavigate();
 
-	const handleLogOut = async (page) => {
+	const handleLogOut = async () => {
 		await firebase.auth().signOut();
 		console.log(user);
-		navigate(page);
+		navigate('/');
 	};
+
+	Confirm.init({
+		fontFamily: 'Roboto',
+		titleColor: '#78A7EF',
+		okButtonBackground: '#78A7EF',
+	})
+
+	const confirmSignOut = () => {
+		Confirm.show(
+			'Confirm to log out',
+			'Are you sure you want to log out?',
+			'Yes',
+			'No',
+			() => {
+				handleLogOut();
+			},
+			() => {
+				console.log('Thanks for staying.');
+			}
+		)
+	}
 
 	return (
 		<div>
@@ -22,7 +44,7 @@ const Navbar = ({ children, user }) => {
 				</div>
 				<div className="flex items-center">
 					<h3
-						onClick={() => handleLogOut("/")}
+						onClick={() => confirmSignOut()}
 						className="mr-4 font-semibold text-white cursor-pointer hover:underline"
 					>
 						Log out

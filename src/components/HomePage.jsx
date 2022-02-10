@@ -1,7 +1,7 @@
 import ChatRoom from "./ChatRoom";
 import LandingPage from "./LandingPage";
 import Loader from "./Loader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -11,6 +11,7 @@ const HomePage = ({ user }) => {
 	const [chatOpen, setChatOpen] = useState(false);
 	const [currentId, setCurrentId] = useState("");
 	const [currentChat, setCurrentChat] = useState("");
+	const [spin, setSpin] = useState(true);
 
 	const messageRoomsRef = db.collection("rooms");
 	const query = messageRoomsRef.orderBy("createdAt");
@@ -23,8 +24,13 @@ const HomePage = ({ user }) => {
 		setChatOpen(true);
 	};
 
+	useEffect(() => {
+		if(user !== null){
+			setSpin(false)
+		}
+	}, [user])
+
 	const handleDelete = (id) => {
-		if (window.confirm("Are you sure you want to delete this room?")) {
 			db.collection("rooms")
 				.doc(id)
 				.delete()
@@ -35,14 +41,11 @@ const HomePage = ({ user }) => {
 				.catch((err) => {
 					console.error("Error: ", err);
 				});
-		} else {
-			console.log("Action canceled.");
-		}
 	};
 
 	return (
 		<>
-			{user === null ? (
+			{spin ? (
 				<Loader />
 			) : (
 				<div className="flex p-4 bg-darkest body-height">
