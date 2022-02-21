@@ -14,7 +14,7 @@ const HomePage = ({ user }) => {
 	const [spin, setSpin] = useState(true);
 
 	const messageRoomsRef = db.collection("rooms");
-	const query = messageRoomsRef.orderBy("createdAt");
+	const query = messageRoomsRef.orderBy("createdAt", 'desc');
 
 	const [messageRooms] = useCollectionData(query, { idField: "id" });
 
@@ -65,7 +65,7 @@ const HomePage = ({ user }) => {
 								}`}
 						>
 							{messageRooms &&
-								messageRooms.reverse().map((room) => {
+								messageRooms.map((room) => {
 									return (
 										<ChatListItem
 											key={room.id}
