@@ -25,22 +25,22 @@ const HomePage = ({ user }) => {
 	};
 
 	useEffect(() => {
-		if(user !== null){
-			setSpin(false)
+		if (user !== null) {
+			setSpin(false);
 		}
-	}, [user])
+	}, [user]);
 
 	const handleDelete = (id) => {
-			db.collection("rooms")
-				.doc(id)
-				.delete()
-				.then(() => {
-					console.log("Document successfully deleted!");
-					setChatOpen(false);
-				})
-				.catch((err) => {
-					console.error("Error: ", err);
-				});
+		db.collection("rooms")
+			.doc(id)
+			.delete()
+			.then(() => {
+				console.log("Document successfully deleted!");
+				setChatOpen(false);
+			})
+			.catch((err) => {
+				console.error("Error: ", err);
+			});
 	};
 
 	return (
@@ -53,7 +53,7 @@ const HomePage = ({ user }) => {
 						<div
 							className={
 								chatOpen
-									? "absolute h-12 p-2 text-xl w-full font-bold tracking-wide text-center text-white transition-all ease-in-out rounded-b-lg cursor-pointer hover:-top-5 -top-12 right-0.5 bg-sent-blue nav-shadow"
+									? "absolute h-12 p-2 text-xl w-full font-bold tracking-wide text-center text-white transition-all ease-in-out rounded-b-lg cursor-pointer hover:-top-5 -top-12 right-0.5 bg-recieved-peach nav-shadow"
 									: " hidden"
 							}
 							onClick={() => setChatOpen(false)}
@@ -61,8 +61,9 @@ const HomePage = ({ user }) => {
 							Close current chatroom
 						</div>
 						<ul
-							className={`h-full ${messageRooms && messageRooms.length >= 10 && "overflow-scroll"
-								}`}
+							className={`h-full ${
+								messageRooms && messageRooms.length >= 10 && "overflow-scroll"
+							}`}
 						>
 							{messageRooms &&
 								messageRooms.map((room) => {

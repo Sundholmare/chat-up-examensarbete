@@ -42,7 +42,7 @@ body {
 }
 
 .loader {
-	border: 10px solid #e7e7e79a;
+	border: 10px solid #373b51;
 	border-top: 10px solid #78c4ef;
 	border-bottom: 10px solid #fe9595;
 	border-radius: 50%;
@@ -62,23 +62,23 @@ body {
 	font-family: "Staatliches", cursive;
 }
 
-.customScroll{
+.customScroll {
 	scrollbar-width: thin;
-	scrollbar-color: #373B51 #232735;	
+	scrollbar-color: #373b51 #232735;
 	margin: 5px 0;
 }
 
-.customScroll::-webkit-scrollbar{
+.customScroll::-webkit-scrollbar {
 	width: 12px;
 }
 
-.customScroll::-webkit-scrollbar-track{
+.customScroll::-webkit-scrollbar-track {
 	background: #232735;
 	margin: 5px 0;
 }
 
-.customScroll::-webkit-scrollbar-thumb{
-	background: #373B51;
+.customScroll::-webkit-scrollbar-thumb {
+	background: #373b51;
 	border-radius: 30px;
 }
 
