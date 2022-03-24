@@ -32,6 +32,7 @@ const ChatRoom = ({ user, id, chatName }) => {
 			uid: user.uid,
 			image: user.photoURL,
 			displayName: user.displayName,
+			email: user.email
 		});
 		setFormData("");
 	};
